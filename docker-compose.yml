@@ -1,5 +1,6 @@
 version: '3'
 services:
+services:
   rails:
     build: .
     command: rails s -b 0.0.0.0
@@ -14,6 +15,7 @@ services:
       - POSTGRES_HOST=db
     links:
       - db
+      - mailcatcher
   db:
     image: postgres:12-alpine
     environment:
@@ -21,5 +23,11 @@ services:
       - POSTGRES_PASSWORD=postgres
     volumes:
       - hype_vagas_data:/var/lib/postgresql/data
+  mailcatcher:
+    restart: on-failure:10
+    image: dockage/mailcatcher:0.7.1
+    ports:
+    - "1080:1080"
+    - "1025:1025"
 volumes:
   hype_vagas_data:

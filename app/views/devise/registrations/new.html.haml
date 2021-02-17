@@ -1,0 +1,22 @@
+.container
+  .row
+    .col-md-6.order-md-2
+      %img.img-fluid{:alt => "Image", :src => "https://preview.colorlib.com/theme/bootstrap/login-form-08/images/undraw_file_sync_ot38.svg"}/
+    .col-md-6.contents
+      .row.justify-content-center
+        .col-md-8
+          .mb-4
+            %h3
+              Cadastre-se
+              %strong Hype Vagas
+            %p.mb-4 As empresas mais Hypadas do momento, esperam por você!
+            = simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+              = f.error_notification
+              .form-inputs
+                = f.input :email, required: true, autofocus: true, input_html: { autocomplete: "email" }
+                = f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length), input_html: { autocomplete: "new-password" }                                          |
+                = f.input :password_confirmation, required: true, input_html: { autocomplete: "new-password" }
+              .form-actions
+                = f.button :submit, "Sign up", class: 'btn text-white btn-block btn-primary'
+              %br/
+            = render "devise/shared/links"
