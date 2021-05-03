@@ -1,6 +1,6 @@
 %nav.navbar.navbar-expand-lg.fixed-top.navbar-dark.bg-dark{"aria-label" => "Main navigation"}
   .container-fluid
-    %a.navbar-brand{:href => "#"} Hype Vagas
+    %a.navbar-brand{:href => root_path } Hype Vagas
     %button.navbar-toggler.p-0.border-0{"aria-label" => "Toggle navigation", "data-bs-toggle" => "offcanvas", :type => "button"}
       %span.navbar-toggler-icon
     #navbarsExampleDefault.navbar-collapse.offcanvas-collapse
@@ -10,9 +10,9 @@
         - unless user_signed_in?
           %li.nav-item
             = link_to('Login/Cadastro', new_user_session_path, class: 'nav-link')
-        %li.nav-item
-          %a.nav-link{:href => new_company_path } Minha empresa
         - if user_signed_in?
+          %li.nav-item
+            %a.nav-link{:href => dynamic_url } Minha empresa
           %li.nav-item.dropdown
             %a#dropdown01.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#"} Settings
             .dropdown-menu{"aria-labelledby" => "dropdown01"}

@@ -5,15 +5,19 @@ class CompaniesController < ApplicationController
 
   def create
     @company = current_user.build_company(company_params)
-    redirect_to @company, notice: 'Empresa cadastrada com sucesso!' if @company.save
+    return redirect_to root_path, notice: 'Empresa cadastrada com sucesso!' if @company.save
     
-   
-    render :new, notice: 'oi'
+    render :new, notice: 'deu ruim'
   end
 
   def edit
+    @company = current_user.company
   end
 
+  def update
+    
+  end
+  
   private
 
   def company_params
