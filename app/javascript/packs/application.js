@@ -9,6 +9,8 @@ import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 import 'bootstrap'
 import './src/application'
+import "trix";
+import "@rails/actiontext";
 
 Rails.start()
 Turbolinks.start()

@@ -23,7 +23,7 @@ class PositionsController < ApplicationController
     render :new, notice: 'Deu ruim :/'
   end
 
-  def create
+  def update
     return redirect_to positions_path, notice: 'Sucesso parsa' if @position.update(params_positon)
 
     render :new, notice: 'Deu ruim :/'
@@ -45,22 +45,10 @@ class PositionsController < ApplicationController
   end
 
   def set_i18n_careers
-    @careers = []
-    Position.careers.each_with_index do |career, index|
-      @careers << [
-        Position.careers.to_a[index].first,
-        I18n.t('activerecord.attributes.position.careers').values.to_a[index]
-      ]
-    end
+    @careers = I18n.t('activerecord.attributes.position.careers')
   end
 
     def set_i18n_contracts
-      @contracts = []
-      Position.contracts.each_with_index do |contract, index|
-        @contracts << [
-          Position.contracts.to_a[index].first,
-          I18n.t('activerecord.attributes.position.contracts').values.to_a[index]
-        ]
-      end
+      @contracts = I18n.t('activerecord.attributes.position.contracts')
     end
 end

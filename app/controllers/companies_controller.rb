@@ -15,7 +15,10 @@ class CompaniesController < ApplicationController
   end
 
   def update
-    
+  @company = current_user.company
+  return redirect_to root_path, notice: 'editado com sucesso!' if @company.update(company_params)
+  
+  render :edit, notice: 'deu ruim'
   end
   
   private
